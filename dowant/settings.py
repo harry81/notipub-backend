@@ -181,6 +181,7 @@ DATABASES = {
         {'ENGINE': 'django.db.backends.sqlite3', 'NAME': 'project.db', 'HOST': 'localhost', 'USER': '', 'PASSWORD': '', 'PORT': ''}
 }
 
-
-
-GOOGLE_API_KEY ='AIzaSyB2sqNTeF8HyKqAltAlh8l1Bjdr2iWafwU'
+try:
+    from local_settings import *
+except ImportError:
+    pass
