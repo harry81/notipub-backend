@@ -138,7 +138,8 @@ INSTALLED_APPS = (
     'djangocms_teaser',
     'djangocms_video',
     'reversion',
-    'dowant'
+    'dowant',
+    'notipub_message'
 )
 
 LANGUAGES = (
@@ -179,3 +180,7 @@ DATABASES = {
     'default':
         {'ENGINE': 'django.db.backends.sqlite3', 'NAME': 'project.db', 'HOST': 'localhost', 'USER': '', 'PASSWORD': '', 'PORT': ''}
 }
+
+
+
+GOOGLE_API_KEY ='AIzaSyB2sqNTeF8HyKqAltAlh8l1Bjdr2iWafwU'
