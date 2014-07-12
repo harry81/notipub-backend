@@ -26,15 +26,13 @@ def register_token(request):
     lng = request.GET.get('lng', None)
 
     dev = DeviceToken(token=token, uuid=uuid)
-    #dev.save()
+    dev.save()
 
     data = {
         "result_code": 0,
-        "message": u"서비스 가능 지역이 아닙니다.",
+        "message": token,
     }
 
-
     response = json.dumps(data)
-    logger.error(response)
     return HttpResponse(response)
 
