@@ -27,6 +27,10 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
+LOG_FOLDER_ROOT = os.path.join(BASE_DIR, '../log/')
+OPERATION_MODE = 'LIVE'
+
+
 
 
 # Application definition
