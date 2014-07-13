@@ -16,7 +16,7 @@ class Command(BaseCommand):
             payload['message']=u"서울은 맑음"
             payload['msgcnt']="3"
             payload['timeStamp']="2014 07 03 20 20 00."
-            print 'Sented to [%s].' % token
+            print 'Sented to [%s].' % reg_id
             gcm.plaintext_request(registration_id=reg_id, data=payload)
     
 
