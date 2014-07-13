@@ -2,7 +2,7 @@
 
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
-from gcm import GCM
+from gcm import GCM, GCMNotRegisteredException
 
 from notipub_message.models import DeviceToken
 
