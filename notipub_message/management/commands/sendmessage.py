@@ -16,7 +16,16 @@ class Command(BaseCommand):
             payload['message']=u"서울은 맑음"
             payload['msgcnt']="3"
             payload['timeStamp']="2014 07 03 20 20 00."
-            print 'Sented to [%s].' % reg_id
-            gcm.plaintext_request(registration_id=reg_id, data=payload)
+            try:
+                canonical_id = gcm.plaintext_request(registration_id=reg_id, data=payload)
+                token = DeviceToken.objects.filter(registration_id=reg_id)
+                token.registration_id = canonical_id
+                token.save()
+                self.stdout.write('Sent to [%s].' % reg_id, ending='')
+            except GCMNotRegisteredException:
+                token = DeviceToken.objects.filter(registration_id=reg_id)
+                token.delete()
+                self.stdout.write('Deleted  [%s].' % reg_id, ending='')
+
     
 
