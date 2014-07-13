@@ -25,7 +25,7 @@ def register_token(request):
     lat = request.GET.get('lat', None)
     lng = request.GET.get('lng', None)
 
-    dev = DeviceToken(token=token, uuid=uuid)
+    dev = DeviceToken(token=token, uuid=uuid, lat=lat, lng=lng)
     dev.save()
 
     data = {

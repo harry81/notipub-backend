@@ -2,3 +2,4 @@
 fabfile.py
 dowant/local_settings.py
 static/
+project.db
