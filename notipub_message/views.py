@@ -18,7 +18,6 @@ def home(request,
     return render_to_response(template,
                                 context, context_instance=RequestContext(request))
 
-@csrf_exempt
 def register_token(request):
     token = request.GET.get('token', None)
     uuid = request.GET.get('uuid', None)
@@ -36,3 +35,16 @@ def register_token(request):
     response = json.dumps(data)
     return HttpResponse(response)
 
+
+def get_current_weather(request):
+    lat = request.GET.get('lat', None)
+    lng = request.GET.get('lng', None)
+
+    data = {
+        "result_code": 1,
+        "message": u'맑음',
+        "district":u'서울',
+    }
+
+    response = json.dumps(data)
+    return HttpResponse(response)
