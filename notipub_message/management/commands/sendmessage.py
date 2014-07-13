@@ -11,7 +11,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         gcm = GCM(settings.GOOGLE_API_KEY)
 
-        for token in set(DeviceToken.objects.all().values_list('token', flat=True)):
+        for reg_id in set(DeviceToken.objects.all().values_list('token', flat=True)):
             payload = {}
             payload['message']=u"서울은 맑음"
             payload['msgcnt']="3"
