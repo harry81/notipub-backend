@@ -18,8 +18,8 @@ def get_district(lat, lng):
     if response['status'] == u'OK':
         ret = "%s %s" % (response['results'][1]['address_components'][0]['short_name'], response['results'][0]['address_components'][0]['short_name']
     )
-        else:
-            ret = "None"
+    else:
+        ret = "None"
 
     return ret
 
