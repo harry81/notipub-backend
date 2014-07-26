@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.template import RequestContext
 
 from notipub_message.models import DeviceToken
-from . import get_district, get_weathersummary
+from helper import get_district, get_weathersummary
 
 from dowant.lib.logs import logs as logging
 logger = logging.get_logger(__name__)
