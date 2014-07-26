@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.template import RequestContext
 
 from notipub_message.models import DeviceToken
-from . import get_district()
+from . import get_district, get_weathersummary
 
 from dowant.lib.logs import logs as logging
 logger = logging.get_logger(__name__)
@@ -41,8 +41,8 @@ def get_current_weather(request):
     lat = request.GET.get('lat', None)
     lng = request.GET.get('lng', None)
 
-    message = u'맑음'
-    district = u'서울'
+    message = get_weathersummary(lat, lng)
+    district = get_district(lat, lng)
 
     data = {
         "result_code": 1,
