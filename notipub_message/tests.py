@@ -7,11 +7,12 @@ class NotipubTests(TestCase):
     def test_get_district(self):
         lat = 37.4978062
         lng = 127.0026627
-        
-        self.assertEqual(get_district(lat, lng), u"서울")
+
+        self.assertEqual(get_district(lat, lng), u"반포대로 산60-2")
 
     def test_get_weathersummary(self):
         lat = 37.4978062
         lng = 127.0026627
-        
-        self.assertEqual(get_weathersummary(lat, lng), "warm")
+
+        ret, summary = get_weathersummary(lat, lng)
+        self.assertEqual(ret, True)

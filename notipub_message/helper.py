@@ -4,14 +4,12 @@ import json
 
 def get_district(lat, lng):
     url = "http://maps.googleapis.com/maps/api/geocode/json?"
-    user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
     values = {'latlng' : '%s,%s' % (lat, lng),
               'language' : 'ko'
               }
-    headers = { 'User-Agent' : user_agent }
 
     data = urllib.urlencode(values)
-    req = urllib2.Request(url + data, None, headers)
+    req = urllib2.Request(url + data)
     
     _response = urllib2.urlopen(req)
     response = json.loads(_response.read())
@@ -25,15 +23,12 @@ def get_district(lat, lng):
 
 
 def get_weathersummary(lat, lng):
-    url = "http://maps.googleapis.com/maps/api/geocode/json?"
-    user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
-    values = {'latlng' : '%s,%s' % (lat, lng)}
-    headers = { 'User-Agent' : user_agent }
+    FORECAST_IO_KEY = "b3f63dfe37bd25cb3ee8ba7bdb6d74c7"
+    url = "https://api.forecast.io/forecast/%s/%s,%s" % (FORECAST_IO_KEY, lat, lng)
 
-    data = urllib.urlencode(values)
-    req = urllib2.Request(url + data, None, headers)
+    req = urllib2.Request(url)
     
-    response = urllib2.urlopen(req)
-    the_page = response.read()
+    _response = urllib2.urlopen(req)
+    response = json.loads(_response.read())
 
-    return 'warm'
+    return response.has_key('currently'), response['currently']['summary']
