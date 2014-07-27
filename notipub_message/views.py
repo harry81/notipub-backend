@@ -41,7 +41,7 @@ def get_current_weather(request):
     lat = request.GET.get('lat', None)
     lng = request.GET.get('lng', None)
 
-    message = get_weathersummary(lat, lng)
+    message = get_weathersummary(lat, lng)[1]
     district = get_district(lat, lng)
 
     data = {
