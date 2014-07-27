@@ -1,6 +1,7 @@
 # encoding: utf-8
 import urllib, urllib2
 import json
+from django.conf import settings
 
 def get_district(lat, lng):
     url = "http://maps.googleapis.com/maps/api/geocode/json?"
@@ -23,8 +24,7 @@ def get_district(lat, lng):
 
 
 def get_weathersummary(lat, lng):
-    FORECAST_IO_KEY = "b3f63dfe37bd25cb3ee8ba7bdb6d74c7"
-    url = "https://api.forecast.io/forecast/%s/%s,%s" % (FORECAST_IO_KEY, lat, lng)
+    url = "https://api.forecast.io/forecast/%s/%s,%s" % (settings.FORECAST_IO_KEY, lat, lng)
 
     req = urllib2.Request(url)
     
