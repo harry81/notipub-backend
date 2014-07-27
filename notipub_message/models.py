@@ -15,5 +15,5 @@ class DeviceToken(models.Model):
         ordering = ['-created_at']
 
     def __unicode__(self):
-        return self.token
+        return self.uuid
 
