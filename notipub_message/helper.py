@@ -31,4 +31,16 @@ def get_weathersummary(lat, lng):
     _response = urllib2.urlopen(req)
     response = json.loads(_response.read())
 
-    return response.has_key('currently'), response['currently']['summary']
+    summary = "%s [%0.f]" % (response['currently']['summary'], _convert_f2c(response['currently']['temperature']))
+    return response.has_key('currently'), summary
+
+
+def _convert_f2c(S):
+    """(str): float
+
+    Converts a Fahrenheit temperature represented as a string
+    to a Celsius temperature.
+    """
+    fahrenheit = float(S)
+    celsius = (fahrenheit - 32) * 5 / 9
+    return celsius
