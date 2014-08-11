@@ -17,8 +17,8 @@ class Command(BaseCommand):
             tok = DeviceToken.objects.filter(uuid=uuid).order_by('created_at')[0]
 
             payload = {}
-            payload['message']= "%s %s " % ( get_district(tok.lat, tok.lng), get_weathersummary(tok.lat, tok.lng)[1])
-            payload['msgcnt']="3"
+            payload['title']="%s" % (get_district(tok.lat, tok.lng))
+            payload['message']= "%s " % (get_weathersummary(tok.lat, tok.lng)[1])
             payload['timeStamp']=str(time.time())
             payload['lat']=str(tok.lat)
             payload['lng']=str(tok.lng)
